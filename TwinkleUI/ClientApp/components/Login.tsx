@@ -3,7 +3,7 @@ import { connect } from "dva";
 import { Input, Button, DatePicker } from 'antd';
 import * as LoginModel from "../models/Login"; 
 
-class Login extends React.Component<LoginModel.LoginState, {}>{
+class Login extends React.Component<{}, {}>{
     constructor(props) {
 
         super(props);
@@ -11,16 +11,9 @@ class Login extends React.Component<LoginModel.LoginState, {}>{
     render() {
         return (
             <div>
-                <Input addonBefore="登陆账号212" />
+                <Input addonBefore="登陆账号in" />
                 <Input addonBefore="登陆密码132" />
                 <DatePicker />
-
-                <Button onClick={() => this.props.dispatch({
-                    type: "login/Login",
-                    payload: {
-                        id: 444
-                    }
-                })}>登陆</Button>
             </div>
         )
     }

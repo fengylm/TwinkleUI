@@ -1,29 +1,18 @@
-﻿import { routerRedux, Router, RouteProps } from 'dva/router';
-
-const delay = (timeout) => new Promise(resolve => setTimeout(resolve, timeout));
-
-export interface LoginState {
-    loginName: string,
-    password: string,
-    accountCode: string,
-    rememberMe: boolean,
-    checkCode: string,
-    dispatch: any
-}
+﻿import { routerRedux } from 'dva/router';
 
 export default {
     namespace: 'login',
-    state: {
-        loginName: "",
-        password: "",
-        accountCode: "",
-        rememberMe: false,
-        checkCode: "",
 
+    state: {},
+
+    effects: {
+        * login({ payload }, { put, call, select }) {
+            const data = yield call(null, payload)
+
+            if (data.success) {
+                yield put(routerRedux.push('/login'))
+            }
+        },
     },
-    reducers: {
-        Login(state) {
-            return { ...state, accountCode:'12312312313'}
-        }
-    }
+
 }

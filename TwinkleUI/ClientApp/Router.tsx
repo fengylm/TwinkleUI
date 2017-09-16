@@ -1,14 +1,28 @@
-﻿import * as React from "react"; 
-import { Router, Route } from "dva/router";
+﻿import * as React from "react";
+import { Switch, Route, Redirect, routerRedux } from 'dva/router'
 
-import Login from "./components/Login";
+import Login from "./routes/login/index";
+
+import LoginModels from "./models/Login";
+
+const { ConnectedRouter } = routerRedux;
 
 
 function routerConfig({ history }) {
+
+    const routes = [
+        {
+            path: '/Login',
+            models: () => [LoginModels],
+            component: () => Login
+        }
+    ]
     return (
-        <Router history={history}>
-            <Route path="/" component={Login} />
-        </Router>
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Route exact  path="/" component={Login} />
+            </Switch>
+        </ConnectedRouter>
     );
 }
 
