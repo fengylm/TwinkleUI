@@ -10,15 +10,15 @@ import LoginModels from "./models/Login";
 
 function startApp() {
     // 1. Initialize
-    const app = dva({
-        ...createLoading({
-            effects: true,
-        }),
-        history: createHistory(),
-        onError(error) {
-            message.error(error.message)
-        }
-    })
+   const app = dva({
+       ...createLoading({
+           effects: true,
+       }),
+       history: createHistory(),
+       onError(error) {
+           message.error(error.message)
+       }
+   })
     // 2. Plugins
     // app.use({});
 

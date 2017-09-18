@@ -1,7 +1,8 @@
 ﻿import * as React from 'react';
 import { connect } from 'dva';
 import { Button, Row, Form, Input } from 'antd';
-import "./index.css";
+import { Loader } from "../../components/index";
+import  "./index.less";
 
 const FormItem = Form.Item
 
@@ -19,7 +20,6 @@ interface LoginProps {
 class Login extends React.Component<LoginProps, {}>{
     constructor(props) {
         super(props);
-
         console.log(this.props.loading);
         this.handleOk = this.handleOk.bind(this);
     }
@@ -34,41 +34,43 @@ class Login extends React.Component<LoginProps, {}>{
 
     public render() {
         return (
-            <div className="form">
-                <div className="logo">
-                    <img alt={'logo'} src="#" />
-                    <span>Twinkle</span>
-                </div>
-                <form>
-                    <FormItem hasFeedback>
-                        {this.props.form.getFieldDecorator('username', {
-                            rules: [
-                                {
-                                    required: true,
-                                },
-                            ],
-                        })(<Input size="large" onPressEnter={this.handleOk} placeholder="Username" />)}
-                    </FormItem>
-                    <FormItem hasFeedback>
-                        {this.props.form.getFieldDecorator('password', {
-                            rules: [
-                                {
-                                    required: true,
-                                },
-                            ],
-                        })(<Input size="large" type="password" onPressEnter={this.handleOk} placeholder="Password" />)}
-                    </FormItem>
-                    <Row>
-                        <Button type="primary" size="large" onClick={this.handleOk} loading={this.props.loading.effects.login} >
-                            Sign in
+            <div>
+                {/*<Loader fullScreen spinning={true} loaderText="数据加载中..." />*/}
+                <div className="form">
+                    <div className="logo">
+                        <img alt={'logo'} src="#" />
+                        <span>Twinkle</span>
+                    </div>
+                    <form>
+                        <FormItem hasFeedback>
+                            {this.props.form.getFieldDecorator('username', {
+                                rules: [
+                                    {
+                                        required: true,
+                                    },
+                                ],
+                            })(<Input size="large" onPressEnter={this.handleOk} placeholder="Username" />)}
+                        </FormItem>
+                        <FormItem hasFeedback>
+                            {this.props.form.getFieldDecorator('password', {
+                                rules: [
+                                    {
+                                        required: true,
+                                    },
+                                ],
+                            })(<Input size="large" type="password" onPressEnter={this.handleOk} placeholder="Password" />)}
+                        </FormItem>
+                        <Row>
+                            <Button type="primary" size="large" onClick={this.handleOk}  >
+                                登陆
                         </Button>
-                        <p>
-                            <span>Username：guest</span>
-                            <span>Password：guest</span>
-                        </p>
-                    </Row>
+                            <p>
+                               
+                            </p>
+                        </Row>
 
-                </form>
+                    </form>
+                </div>
             </div>
         );
     }

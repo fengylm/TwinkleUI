@@ -7,11 +7,11 @@ export default {
 
     effects: {
         * login({ payload }, { put, call, select }) {
-            const data = yield call(null, payload)
+           // const data = yield call(null, payload)
 
-            if (data.success) {
-                yield put(routerRedux.push('/login'))
-            }
+            //if (data.success) {
+            //    yield put(routerRedux.push('/login'))
+            //}
         },
     },
 
