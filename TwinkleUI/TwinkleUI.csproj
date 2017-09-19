@@ -11,6 +11,7 @@
     <None Remove="ClientApp\Index.tsx" />
     <None Remove="ClientApp\Router.tsx" />
     <None Remove="ClientApp\routes\Login.tsx" />
+    <None Remove="ClientApp\utils\request.tsx" />
     <None Remove="npm-debug.log" />
   </ItemGroup>
 
@@ -25,6 +26,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\Index.tsx" />
     <TypeScriptCompile Include="ClientApp\Router.tsx" />
+    <TypeScriptCompile Include="ClientApp\utils\request.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">

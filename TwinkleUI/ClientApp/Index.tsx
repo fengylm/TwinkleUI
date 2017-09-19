@@ -22,8 +22,8 @@ function startApp() {
     // 2. Plugins
     // app.use({});
 
-    // 3. Model
-    app.model(LoginModels);
+   // 3. Model
+   app.model(LoginModels);
 
     // 4. Router
     app.router(router);
@@ -31,8 +31,10 @@ function startApp() {
     // 5. Start
     app.start("#root"); 
 }
+
 startApp();
 
+//非正常的hmr 主要是没找到在
 if (module.hot) {
     module.hot.accept('./Router', () => {
         startApp();

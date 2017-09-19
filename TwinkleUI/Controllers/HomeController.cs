@@ -19,5 +19,12 @@ namespace TwinkleUI.Controllers
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return View();
         }
+
+        public IActionResult fetchData()
+        {
+            return Json(new {
+                success=true
+            });
+        }
     }
 }
