@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="ClientApp\Index.tsx" />
     <None Remove="ClientApp\Router.tsx" />
+    <None Remove="ClientApp\routes\error\index.tsx" />
     <None Remove="ClientApp\routes\Login.tsx" />
     <None Remove="ClientApp\utils\request.tsx" />
     <None Remove="npm-debug.log" />
@@ -26,6 +27,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\Index.tsx" />
     <TypeScriptCompile Include="ClientApp\Router.tsx" />
+    <TypeScriptCompile Include="ClientApp\routes\error\index.tsx" />
     <TypeScriptCompile Include="ClientApp\utils\request.tsx" />
   </ItemGroup>
 

@@ -21,13 +21,13 @@ module.exports = (webpackConfig,env) => {
         },
         entry: {
             vendor: [
-                'event-source-polyfill',
-                //'isomorphic-fetch',//已经有dva/fetch取代
                 'react',
                 'react-dom',
                 'antd',
                 'dva',
-                'antd/dist/antd.css'
+                'antd/dist/antd.css',
+                'dva-loading',
+                'classnames'
             ],
         },
         output: {

@@ -20,7 +20,6 @@ interface LoginProps {
 class Login extends React.Component<LoginProps, {}>{
     constructor(props) {
         super(props);
-        console.log(this.props.loading);
         this.handleOk = this.handleOk.bind(this);
     }
     public handleOk() {

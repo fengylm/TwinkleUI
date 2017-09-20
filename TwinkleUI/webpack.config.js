@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
-const tsImportPluginFactory = require('ts-import-plugin');
 
 const bundleOutputDir = './wwwroot/dist';
 module.exports = (env) => {
@@ -21,17 +20,11 @@ module.exports = (env) => {
                 {
                     test: /\.tsx?$/,
                     include: /ClientApp/,
-                    loader: 'awesome-typescript-loader?silent=true',
-                    options: {
-                        getCustomTransformers: () => ({
-                            before: [tsImportPluginFactory(
-                                {
-                                    libraryName: "antd",
-                                    style: "css"
-                                }
-                            )]
-                        })
-                    }
+                    use: [
+                        {
+                            loader: 'awesome-typescript-loader'
+                        }
+                    ]
                 },
                 { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.less$/, use: isDevBuild ? ['style-loader', 'css-loader', 'less-loader'] : ExtractTextPlugin.extract({ use: 'style-loader!css-loader!less-loader?minimize' }) },

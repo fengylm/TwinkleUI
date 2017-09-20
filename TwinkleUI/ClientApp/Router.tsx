@@ -1,29 +1,54 @@
-﻿import * as React from "react";
-import { Switch, Route, Redirect, routerRedux } from 'dva/router'
-
-import Login from "./routes/login/index";
-
+﻿import React from 'react';
+import { Router, Switch, Route } from 'dva/router';
+import dynamic from 'dva/dynamic';
 import LoginModels from "./models/Login";
 
-const { ConnectedRouter } = routerRedux;
+function RouterConfig({ history, app }) {
 
+    //处理动态加载model,获取不到namespace的问题
+    function resolve(models: Array<Promise<any>>) {
 
-function routerConfig({ history }) {
+        let newArray: Array<Promise<any>> = [];
+
+        models.map((value, index) => {
+            newArray.push(value.then(v => v.default));
+        });
+
+        return newArray;
+    }
+
+    const error = dynamic({
+        app,
+        component: () => import('./routes/error'),
+    })
 
     const routes = [
         {
-            path: '/Login',
-            models: () => [LoginModels],
-            component: () => Login
+            path: "/",
+            models: () => resolve([import("./models/Login")]),
+            component: () => import("./routes/login")
         }
-    ]
+    ];
+
     return (
-        <ConnectedRouter history={history}>
+        <Router history={history}>
             <Switch>
-                <Route exact  path="/" component={Login} />
+                {
+                    routes.map(({ path, ...dynamics }, key) => (
+                        <Route key={key}
+                            exact
+                            path={path}
+                            component={dynamic({
+                                app,
+                                ...dynamics
+                            })}
+                        />
+                    ))
+                }
+
             </Switch>
-        </ConnectedRouter>
+        </Router>
     );
 }
 
-export default routerConfig;
+export default RouterConfig;

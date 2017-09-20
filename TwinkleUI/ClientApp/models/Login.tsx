@@ -22,6 +22,5 @@ export default {
                 yield put(routerRedux.push('/login'))
             }
         },
-    },
-
+    }
 }
