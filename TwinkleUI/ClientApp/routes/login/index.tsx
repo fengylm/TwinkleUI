@@ -3,16 +3,14 @@ import { connect } from 'dva';
 import { Button, Row, Form, Input } from 'antd';
 import { Loader } from "../../components/index";
 import  "./index.less";
+import { WrappedFormUtils } from 'antd/lib/form/Form';
 
 const FormItem = Form.Item
 
 interface LoginProps {
     loading,
     dispatch,
-    form: {
-        getFieldDecorator,
-        validateFieldsAndScroll,
-    },
+    form: WrappedFormUtils,
 }
 
 
@@ -27,7 +25,7 @@ class Login extends React.Component<LoginProps, {}>{
             if (errors) {
                 return
             }
-            this.props.dispatch({ type: 'login/login', payload: values })
+            this.props.dispatch({ type: 'loginModel/login', payload: values })
         })
     }
 
@@ -60,7 +58,7 @@ class Login extends React.Component<LoginProps, {}>{
                             })(<Input size="large" type="password" onPressEnter={this.handleOk} placeholder="Password" />)}
                         </FormItem>
                         <Row>
-                            <Button type="primary" size="large" onClick={this.handleOk}  >
+                            <Button type="primary" size="large" onClick={this.handleOk} loading={this.props.loading.effects["loginModel/login"]}  >
                                 登陆
                         </Button>
                             <p>

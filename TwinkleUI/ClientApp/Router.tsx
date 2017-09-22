@@ -1,12 +1,11 @@
 ﻿import React from 'react';
 import { Router, Switch, Route } from 'dva/router';
 import dynamic from 'dva/dynamic';
-import LoginModels from "./models/Login";
 
 function RouterConfig({ history, app }) {
 
     //处理动态加载model,获取不到namespace的问题
-    function resolve(models: Array<Promise<any>>) {
+    function resolveModel(models: Array<Promise<any>>) {
 
         let newArray: Array<Promise<any>> = [];
 
@@ -14,7 +13,7 @@ function RouterConfig({ history, app }) {
             newArray.push(value.then(v => v.default));
         });
 
-        return newArray;
+        return () => newArray;
     }
 
     const error = dynamic({
@@ -25,7 +24,7 @@ function RouterConfig({ history, app }) {
     const routes = [
         {
             path: "/",
-            models: () => resolve([import("./models/Login")]),
+            models: () => [import("./models/Login")],
             component: () => import("./routes/login")
         }
     ];
@@ -34,13 +33,14 @@ function RouterConfig({ history, app }) {
         <Router history={history}>
             <Switch>
                 {
-                    routes.map(({ path, ...dynamics }, key) => (
+                    routes.map(({ path, models, component }, key) => (
                         <Route key={key}
                             exact
                             path={path}
                             component={dynamic({
                                 app,
-                                ...dynamics
+                                models: resolveModel(models()),
+                                component
                             })}
                         />
                     ))

@@ -3,7 +3,7 @@ import request from '../utils/request';
 
 
 export default {
-    namespace: 'login',
+    namespace: 'loginModel',
 
     state: {},
     reducers: {

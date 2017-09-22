@@ -31,6 +31,7 @@
     <TypeScriptCompile Include="ClientApp\utils\request.tsx" />
   </ItemGroup>
 
+  
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug'">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
