@@ -72,4 +72,4 @@ class Login extends React.Component<LoginProps, {}>{
         );
     }
 }
-export default connect(({ loading }) => ({ loading }))(Form.create()(Login))
+export default connect(({ loginModel, appModel, loading }) => ({ loginModel, appModel, loading }))(Form.create()(Login))

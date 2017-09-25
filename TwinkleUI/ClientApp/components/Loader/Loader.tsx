@@ -4,8 +4,8 @@ import './Loader.less'
 
 interface LoaderProps {
     spinning: boolean,
-    fullScreen: boolean,
-    loaderText: string
+    fullScreen?: boolean,
+    loaderText?: string
 };
 
 class Loader extends React.Component<LoaderProps, {}>{

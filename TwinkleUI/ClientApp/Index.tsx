@@ -1,8 +1,9 @@
-﻿import { message } from 'antd'
+﻿import { message } from "antd";
 import dva from "dva";
-import createLoading from 'dva-loading'
-import createHistory from 'history/createBrowserHistory'
+import createLoading from "dva-loading";
+import createHistory from "history/createBrowserHistory";
 import router from "./Router";
+import appModel from "./models/app";
 
 
 
@@ -17,6 +18,7 @@ function startApp() {
             message.error(error.message)
         }
     })
+    app.model(appModel)
 
     app.router(router);
 

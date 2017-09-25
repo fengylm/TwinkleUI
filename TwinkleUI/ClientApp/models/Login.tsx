@@ -8,7 +8,6 @@ export default {
     state: {},
     reducers: {
         login1(state, { payload }) {
-            console.log("reducers login");
             return { ...state }
         }
     },
@@ -16,7 +15,6 @@ export default {
         * login({ payload }, { put, call, select }) {
             const { data } = yield request("Home/fetchData", payload);
 
-            console.log(data.success);
             if (data.success) {
                 yield put({ type: "login1", payload: { ...payload } });
                 yield put(routerRedux.push('/login'))

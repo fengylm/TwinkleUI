@@ -1,6 +1,9 @@
 ﻿import React from 'react';
-import { Router, Switch, Route } from 'dva/router';
+import { Router, Switch, Route, routerRedux, Redirect } from 'dva/router';
 import dynamic from 'dva/dynamic';
+import { App } from "./components"
+
+const { ConnectedRouter } = routerRedux;
 
 function RouterConfig({ history, app }) {
 
@@ -23,31 +26,39 @@ function RouterConfig({ history, app }) {
 
     const routes = [
         {
-            path: "/",
+            path: "/login",
             models: () => [import("./models/Login")],
             component: () => import("./routes/login")
+        },
+        {
+            path: "/user",
+            models: () => [import("./models/user"), import("./models/Login")],
+            component: () => import("./routes/user")
         }
     ];
 
     return (
-        <Router history={history}>
-            <Switch>
-                {
-                    routes.map(({ path, models, component }, key) => (
-                        <Route key={key}
-                            exact
-                            path={path}
-                            component={dynamic({
-                                app,
-                                models: resolveModel(models()),
-                                component
-                            })}
-                        />
-                    ))
-                }
+        <ConnectedRouter history={history}>
+            <App>
+                <Switch>
+                    {/*<Route exact path="/" render={() => (<Redirect to="/dashboard" />)} />*/}
+                    {
+                        routes.map(({ path, models, component }, key) => (
+                            <Route key={key}
+                                exact
+                                path={path}
+                                component={dynamic({
+                                    app,
+                                    models: resolveModel(models()),
+                                    component
+                                })}
+                            />
+                        ))
+                    }
 
-            </Switch>
-        </Router>
+                </Switch>
+            </App>
+        </ConnectedRouter>
     );
 }
 

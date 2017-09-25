@@ -27,7 +27,12 @@ module.exports = (webpackConfig,env) => {
                 'dva',
                 'antd/dist/antd.css',
                 'dva-loading',
-                'classnames'
+                'classnames',
+                'nprogress',
+                'qs',
+                'query-string',
+                'react-helmet'
+
             ],
         },
         output: {
