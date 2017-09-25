@@ -40,7 +40,7 @@ export default {
     effects: {
 
         * query({payload}, { call, put, select }) {
-            //const { locationPathname } = yield select(_ => _.app)
+            const { locationPathname } = yield select(_ =>_.appModel)
             const { data } = yield request("Home/fetchData", payload);
 
             if (false) {
