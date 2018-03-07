@@ -8,18 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Loader\App.tsx" />
-    <None Remove="ClientApp\components\Page\Page.tsx" />
+    <None Remove="ClientApp\components\HeaderCustom.tsx" />
+    <None Remove="ClientApp\components\SiderCustom.tsx" />
     <None Remove="ClientApp\config\index.tsx" />
     <None Remove="ClientApp\Index.tsx" />
     <None Remove="ClientApp\models\app.tsx" />
     <None Remove="ClientApp\models\user.tsx" />
     <None Remove="ClientApp\Router.tsx" />
+    <None Remove="ClientApp\routes\app.tsx" />
     <None Remove="ClientApp\routes\error\index.tsx" />
     <None Remove="ClientApp\routes\Login.tsx" />
-    <None Remove="ClientApp\routes\user\index.tsx" />
-    <None Remove="ClientApp\utils\index.tsx" />
-    <None Remove="ClientApp\utils\request.tsx" />
     <None Remove="npm-debug.log" />
   </ItemGroup>
 
@@ -32,17 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Layout\App.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Page\Page.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Page.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\HeaderCustom.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\SiderCustom.tsx" />
     <TypeScriptCompile Include="ClientApp\config\index.tsx" />
     <TypeScriptCompile Include="ClientApp\Index.tsx" />
     <TypeScriptCompile Include="ClientApp\models\app.tsx" />
     <TypeScriptCompile Include="ClientApp\models\user.tsx" />
     <TypeScriptCompile Include="ClientApp\Router.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\App.tsx" />
     <TypeScriptCompile Include="ClientApp\routes\error\index.tsx" />
-    <TypeScriptCompile Include="ClientApp\routes\user\index.tsx" />
-    <TypeScriptCompile Include="ClientApp\utils\index.tsx" />
-    <TypeScriptCompile Include="ClientApp\utils\request.tsx" />
   </ItemGroup>
 
   

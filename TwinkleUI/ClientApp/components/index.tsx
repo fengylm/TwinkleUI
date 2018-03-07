@@ -1,9 +1,11 @@
-﻿import Loader from "./Loader/Loader";
-import App from "./Layout/App";
-import Page from "./Page/Page";
+﻿import HeaderCustom from "./HeaderCustom";
+import SiderCustom from "./SiderCustom";
+import Page from "./Page";
+import App from "./App"
 
 export {
-    Loader,
-    App,
-    Page
+    HeaderCustom,
+    SiderCustom,
+    Page,
+    App
 }

@@ -5,7 +5,9 @@ import request from '../utils/request';
 export default {
     namespace: 'loginModel',
 
-    state: {},
+    state: {
+        title:'企明星'
+    },
     reducers: {
         login1(state, { payload }) {
             return { ...state }
@@ -17,7 +19,8 @@ export default {
 
             if (data.success) {
                 yield put({ type: "login1", payload: { ...payload } });
-                yield put(routerRedux.push('/login'))
+                yield put({ type: "appModel/updateState", payload: { a:"bbb" } });
+             //   yield put(routerRedux.push('/login'))
             }
         },
     }

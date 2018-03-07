@@ -26,6 +26,7 @@
     "nprogress": "^0.2.0",
     "qs": "^6.5.1",
     "query-string": "^5.0.0",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "screenfull": "^3.3.2"
   }
 }
